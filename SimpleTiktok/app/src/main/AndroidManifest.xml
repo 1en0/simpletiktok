@@ -9,13 +9,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SimpleTiktok">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".douyinapi.DouYinEntryActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.qxy.addd.simpletiktok"
+            android:exported="true">
+        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <queries>
+        <!--允许查询抖音和抖音极速版的软件包信息-->
+        <package android:name="com.ss.android.ugc.aweme" />
+        <package android:name="com.ss.android.ugc.aweme.lite" />
+    </queries>
 
 </manifest>
