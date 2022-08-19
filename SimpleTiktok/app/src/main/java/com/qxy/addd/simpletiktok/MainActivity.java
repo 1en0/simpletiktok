@@ -1,6 +1,7 @@
 package com.qxy.addd.simpletiktok;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -9,6 +10,7 @@ import com.bytedance.sdk.open.aweme.authorize.model.Authorization;
 import com.bytedance.sdk.open.douyin.DouYinOpenApiFactory;
 import com.bytedance.sdk.open.douyin.DouYinOpenConfig;
 import com.bytedance.sdk.open.douyin.api.DouYinOpenApi;
+import com.qxy.addd.simpletiktok.viewmodel.MainViewModel;
 
 import java.io.IOException;
 
@@ -19,14 +21,16 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    MainViewModel mainViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        init();
+        authorize();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
     }
 
-    private boolean init(){
+    private boolean authorize(){
         String clientkey = "awsmbt4qp3nm9zlf"; // 需要到开发者网站申请
         DouYinOpenApiFactory.init(new DouYinOpenConfig(clientkey));
         DouYinOpenApi douyinOpenApi = DouYinOpenApiFactory.create(this);
