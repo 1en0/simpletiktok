@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.qxy.addd.simpletiktok.DAO.Gender;
 import com.qxy.addd.simpletiktok.DAO.User;
 import com.qxy.addd.simpletiktok.R;
@@ -18,6 +19,7 @@ import java.util.List;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private final List<User> mUserList;
+    private View view;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView userImage;
@@ -41,14 +43,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user, parent, false);
+        this.view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         User user = mUserList.get(position);
-        holder.userImage.setImageResource(user.getImageId());
+        //holder.userImage.setImageResource(user.getImageId());
+        Glide.with(view).load(user.getImageId()).into(holder.userImage);
         holder.nickName.setText(user.getName());
         Gender gender = user.getGender();
         int imageId = (gender.equals(Gender.FEMALE) ? R.drawable.female : R.drawable.male);

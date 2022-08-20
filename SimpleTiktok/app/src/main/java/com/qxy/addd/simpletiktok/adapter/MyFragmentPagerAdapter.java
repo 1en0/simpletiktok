@@ -11,7 +11,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.qxy.addd.simpletiktok.fragment.PageFragment;
 
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
-    private final String[] titles = {"关注", "粉丝"};
+    //private final String[] titles = {"关注", "粉丝"};
+    private final String[] titles = {"Following", "Follower"};
     //private Context context;
     public MyFragmentPagerAdapter(FragmentManager fm){
         super(fm);
