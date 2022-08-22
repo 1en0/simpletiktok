@@ -14,8 +14,7 @@ import com.bytedance.sdk.open.aweme.common.model.BaseResp;
 import com.bytedance.sdk.open.aweme.share.Share;
 import com.bytedance.sdk.open.douyin.DouYinOpenApiFactory;
 import com.bytedance.sdk.open.douyin.api.DouYinOpenApi;
-import com.qxy.addd.simpletiktok.MainActivity;
-import android.util.Log;
+import com.qxy.addd.simpletiktok.AuthActivity;
 //import com.bytedance.sdk.share.demo.MainActivity;
 
 /**
@@ -45,7 +44,7 @@ public class DouYinEntryActivity extends Activity implements IApiEventHandler {
         if (resp.getType() == CommonConstants.ModeType.SHARE_CONTENT_TO_TT_RESP) {
             Share.Response response = (Share.Response) resp;
             Toast.makeText(this, " code：" + response.errorCode + " 文案：" + response.errorMsg, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, AuthActivity.class);
             startActivity(intent);
         } else if (resp.getType() == CommonConstants.ModeType.SEND_AUTH_RESPONSE) {
             Authorization.Response response = (Authorization.Response) resp;

@@ -12,7 +12,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return country + "·" + province + "·" + city;
+        return country + province + city;
     }
 
     public String getCity() {
